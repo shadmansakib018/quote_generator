@@ -1,7 +1,7 @@
 const quoteContainer = document.querySelector("#quote-container");
 const quoteText = document.querySelector("#quote");
 const authorText = document.querySelector("#author");
-const twitterBtn = document.querySelector("#twitter");
+//const twitterBtn = document.querySelector("#twitter");
 const newQuoteBtn = document.querySelector("#new-quote");
 const loader = document.querySelector("#loader");
 
@@ -45,7 +45,9 @@ async function getQuotes() {
 
   try {
     const response = await fetch(apiUrl);
+    console.log(response);
     apiQuotes = await response.json();
+    console.log(apiQuotes);
     newQuote();
     hideLoadingSpinner();
   } catch (error) {
@@ -59,16 +61,16 @@ async function getQuotes() {
 }
 
 // Twitter button
-function tweetQuote() {
-  const quote = quoteText.innerText;
-  const author = authorText.innerText;
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
-  window.open(twitterUrl, "_blank");
-}
+// function tweetQuote() {
+//   const quote = quoteText.innerText;
+//   const author = authorText.innerText;
+//   const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+//   window.open(twitterUrl, "_blank");
+// }
 
 // Event Listeners
 newQuoteBtn.addEventListener("click", newQuote);
-twitterBtn.addEventListener("click", tweetQuote);
+//twitterBtn.addEventListener("click", tweetQuote);
 
 // On load
 getQuotes();
